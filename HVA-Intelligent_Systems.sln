@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.161
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuzzy Logic", "Fuzzy Logic\Fuzzy Logic.csproj", "{1390B214-01D0-4591-A047-7D678A033E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuzzy Logic", "Fuzzy Logic\Fuzzy Logic.csproj", "{1390B214-01D0-4591-A047-7D678A033E00}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Tensorflow", "Tensorflow\Tensorflow.pyproj", "{F66D6B39-C74A-4B07-965C-43054A36EAED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{1390B214-01D0-4591-A047-7D678A033E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1390B214-01D0-4591-A047-7D678A033E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1390B214-01D0-4591-A047-7D678A033E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F66D6B39-C74A-4B07-965C-43054A36EAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66D6B39-C74A-4B07-965C-43054A36EAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

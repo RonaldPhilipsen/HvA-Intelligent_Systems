@@ -1,15 +1,13 @@
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.keras.layers import Activation, Dropout, Flatten, Dense
-from tensorflow.keras import backend as K
+import os, sys, time, cv2
+os.environ['KERAS_BACKEND'] = 'plaidml.keras.backend'
 
-import sys, time
-import cv2 as cv 
 import numpy as np
-
+from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.layers import Conv2D, MaxPooling2D
+from keras.layers import Activation, Dropout, Flatten, Dense
+from keras import backend as K
 
 # dimensions of our images.
 img_width, img_height = 300, 300
@@ -36,7 +34,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(128, (3, 3), activation="relu"))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(128, (3, 3), activation="relu"))
+model.add(Conv2D(256, (3, 3), activation="relu"))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
@@ -70,11 +68,11 @@ validationGenerator = Datagen.flow_from_directory(
     class_mode='categorical')
 
 es = EarlyStopping(monitor='val_loss', mode='min', patience=5, verbose=1)
-mc = ModelCheckpoint('best_model.h5', monitor='val_accuracy', mode='max', verbose=1, save_best_only=True)
+mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
 
 startTime = time.time();
 
-model.fit(
+model.fit_generator(
     trainGenerator,
     steps_per_epoch=nTrainSamples // batchSize,
     epochs=epochs,

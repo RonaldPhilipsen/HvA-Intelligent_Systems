@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d6b39-c74a-4b07-965c-43054a36eaed</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Capture_footage.py</StartupFile>
+    <StartupFile>application.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

@@ -2,7 +2,7 @@
 from PIL import Image
 import os, sys
 
-path = ".\\images\\"
+path = ".\\data\\"
 dirs = os.listdir( path )
 
 def resize(height, width):
@@ -13,4 +13,14 @@ def resize(height, width):
                 imResize = im.resize((height,width), Image.ANTIALIAS)
                 imResize.save(path+ dir + "\\" + file, 'JPEG', quality=90)
 
-resize(150,150)
+resize(120,120)
+
+#copy files from fingers folder
+
+path = ".\\fingers\\fingers\\train"
+outpath = ".\\data\\"
+for f in  os.listdir( path ):
+     if os.path.isfile(path + "\\" + f):
+         fnlen = len(f)
+         nfingers = (f[fnlen-6: fnlen-5])
+         os.rename(path + "\\" + f, outpath + "\\" + str(nfingers) + "\\" + f )

@@ -7,14 +7,14 @@ cam = cv.VideoCapture(0)
 
 nPictures = 300
 i = 0
-img_folder = "images"
+img_folder = "data"
 
 def set_folder():
     if not os.path.exists(img_folder):
         os.mkdir(img_folder)
 
     folder = input("Please enter a folder name: ")
-    if not os.path.exists(img_folder + folder):
+    if not os.path.exists(img_folder + '/'+ folder):
         os.mkdir(img_folder + '/' + folder)
     return img_folder + '/' + folder + '/'
     

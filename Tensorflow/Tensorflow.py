@@ -11,12 +11,13 @@ import numpy as np
 
 
 # dimensions of our images.
-img_width, img_height = 150, 150
+img_width, img_height = 120, 120
 
-trainDir = 'data/training'
-validationDir = 'data/validation'
-nTrainSamples = 1184
-nValidationSamples = 600
+datadir = 'data'
+#trainDir = 'data'
+#validationDir = 'data'
+nTrainSamples = 18474
+nValidationSamples = 4618
 epochs = 50
 batchSize = 16
 
@@ -35,38 +36,41 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(128, (3, 3), activation="relu"))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(128, (3, 3), activation="relu"))
+model.add(Conv2D(256, (3, 3), activation="relu"))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
 model.add(Dropout(0.5))
 model.add(Dense(512, activation="relu"))
-model.add(BatchNormalization())
+model.add(Dense(512, activation="relu"))
 model.add(Dense(6, activation="softmax"))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.summary()
 
-trainDatagen = ImageDataGenerator(
+Datagen = ImageDataGenerator(
     rescale=1. / 255,
     rotation_range=40,
     width_shift_range=0.3,
     height_shift_range=0.3,
     shear_range=0.4,
     zoom_range=0.4,
-    horizontal_flip=True)
+    horizontal_flip=True,
+    validation_split= 0.2)
 
-testDatagen = ImageDataGenerator(rescale=1. / 255)
-
-trainGenerator = trainDatagen.flow_from_directory(
-    trainDir,
+trainGenerator = Datagen.flow_from_directory(
+    #trainDir,
+    datadir,
+    subset="training",
     target_size=(img_width, img_height),
     batch_size=batchSize,
     class_mode='categorical')
 
-validationGenerator = testDatagen.flow_from_directory(
-    validationDir,
+validationGenerator = Datagen.flow_from_directory(
+    #validationDir,
+    datadir,
+    subset="validation",
     target_size=(img_width, img_height),
     batch_size=batchSize,
     class_mode='categorical')

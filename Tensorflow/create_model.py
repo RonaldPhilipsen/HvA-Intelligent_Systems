@@ -16,7 +16,7 @@ trainDir = 'data\\train'
 validationDir = 'data\\test'
 nTrainSamples = 9081
 nValidationSamples = 3632
-epochs = 50
+epochs = 60
 nbatch = 128
 
 input_shape = (imgWidth, imgHeight, 1)
@@ -35,7 +35,7 @@ model.add(Dense(512, activation="relu"))
 model.add(Dropout(0.5))
 model.add(Dense(6, activation="softmax"))
 
-model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss="categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.summary()
 

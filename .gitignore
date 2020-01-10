@@ -1,5 +1,6 @@
 /.vs
 /Tensorflow/images
 /Tensorflow/data
+/Tensorflow/models
 */bin/
 */obj/
